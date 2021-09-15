@@ -83,3 +83,82 @@ public class VehicleFactory{
     }
   }
 }
+
+//new
+
+public class Customer
+{
+  private int id;
+  private String name;
+  private String email;
+  private int phoneNo;
+
+  public int getId(){
+    return id;
+  }
+
+  public int getName(){
+    return name;
+  }
+
+  public int getEmail(){
+    return email;
+  }
+
+  public int getPhoneNo(){
+    return phoneNo;
+  }
+
+private Customer(CustomerBuilder builder)
+{
+  this.id=builder.id;
+  this.name=builder.name;
+  this.email=builder.email;
+  this.phoneNo=builder.phoneNo;
+}
+
+  static class CustomerBuilder {
+
+    private int id;
+    private String name;
+    private String email;
+    private int phoneNo;
+
+    public CustomerBuilder setId(int id)
+    {
+      this.id=id;
+      return this;
+    }
+
+    public CustomerBuilder setName(String name)
+    {
+      this.name=name;
+      return this;
+    }
+
+    public CustomerBuilder setEmail(String email)
+    {
+      this.email=email;
+      return this;
+    }
+
+    public CustomerBuilder setPhoneNo(int phoneNo)
+    {
+      this.phoneNo=phoneNo;
+      return this;
+    }
+
+    public Customer build()
+    {
+      return new Customer(this);
+    }
+    //to be performed in main method!
+Customer customer = new Customer
+                    .CustomerBuilder()
+                    .setEmail("x@y.com")
+                    .setName("shashwat")
+                    .setId(37)
+                    .setPhoneNo(7703456780)
+                    .build();
+  }
+}
