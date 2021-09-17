@@ -1,7 +1,7 @@
 public class Main{
   public static void main(String args[])
   {
-    CircularQueue queue = new CircularQueue(3);
+    Queue queue = new Queue(3);
            queue.enQueue(1);
            queue.enQueue(3);
            queue.enQueue(6);
