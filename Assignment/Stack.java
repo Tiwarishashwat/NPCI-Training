@@ -54,4 +54,12 @@ public class Stack
     }
     return -1;
   }
+
+  public void printStack(){
+       for (int i = 0; i < top; i++) {
+           System.out.println(arr[i]);
+       }
+   }
+
+
 }
