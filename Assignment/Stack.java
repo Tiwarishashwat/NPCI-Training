@@ -56,9 +56,10 @@ public class Stack
   }
 
   public void printStack(){
-       for (int i = 0; i < top; i++) {
-           System.out.println(arr[i]);
+       for (int i = 0; i <=top; i++) {
+           System.out.print(arr[i]+" ");
        }
+       System.out.println();
    }
 
 

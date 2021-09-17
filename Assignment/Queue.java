@@ -55,8 +55,9 @@ public class Queue {
         int i;
         if(!isEmpty()){
             for (i=front; i<=rear;i++){
-                System.out.println(items[i]);
+                System.out.print(items[i]+" ");
             }
+            System.out.println();
         }
     }
 }
