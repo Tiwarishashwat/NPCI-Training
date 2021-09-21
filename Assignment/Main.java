@@ -11,7 +11,7 @@ public class Main{
     //    // remove
     //    stack.pop();
     //
-    // Queue queue = new Queue(3);
+    Queue queue = new Queue(4);
     //        queue.enQueue(1);
     //        queue.enQueue(3);
     //        queue.enQueue(6);
@@ -26,9 +26,17 @@ public class Main{
                   linkedList.insertAtEnd(1);
                   linkedList.insertAtFront(3);
                   linkedList.insertAtFront(10);
-                  linkedList.insert(linkedList.head.next,9);
-
+                  linkedList.insertAtFront(9);
+                  linkedList.sortList();
                   linkedList.printList();
+
+                  while(linkedList.head!=null)
+                  {
+                    queue.enQueue(linkedList.head.data);
+                    linkedList.head=linkedList.head.next;
+                  }
+
+                  queue.printQueue();
 
   }
 }
