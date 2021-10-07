@@ -1,14 +1,42 @@
 import java.util.*;
 import java.io.*;
 import java.lang.*;
-class Main{
+
+public class Main{
   public static void main(String args[]) throws Exception
   {
     Main object = new Main();
-    object.startPage();
+    object.startPageUI();
   }
 
-  public void startPage() throws InterruptedException{
+  public static void displayLoan(Loan loan)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("\t Hello and welcome to Loan Service");
+    System.out.println("\t Please Enter your details");
+    System.out.println("\t Enter your Name");
+    String name = sc.nextLine();
+    loan.setName(name);
+    System.out.println("\t Enter your Age");
+    int age = Integer.parseInt(sc.nextLine());
+    loan.setAge(age);
+    System.out.println("\t Choose your Income Group:");
+    System.out.println("\t\t Press 1 for Low-Income Group");
+    System.out.println("\t\t Press 2 for Middle-Income Group");
+    System.out.println("\t\t Press 3 for Upper-Income Group");
+    String incomeGroup = sc.nextLine();
+    incomeGroup=incomeGroup.trim();
+    if(!incomeGroup.equals("1") && !incomeGroup.equals("2") && !incomeGroup.equals("3")){
+      System.out.println("\t\t Wrong Input!");
+      return;
+    }
+    loan.setIncomeGroup(incomeGroup);
+    System.out.println("\t Enter the Loan Amount");
+    float loanAmount = sc.nextFloat();
+    loan.setLoanAmount(loanAmount);
+  }
+
+  public void startPageUI() throws InterruptedException{
     Scanner sc = new Scanner(System.in);
     while(true)
     {
@@ -26,7 +54,8 @@ class Main{
 
       if(choice.charAt(0)=='1')
       {
-        System.out.println("\t Option 1");
+        Loan loan = new Loan();
+        displayLoan(loan);
       }
 
       else if(choice.charAt(0)=='2')
@@ -42,7 +71,7 @@ class Main{
 
       else
       {
-          System.out.println("\t Please press either 1,2 or 3, Dikhta nhi hai kya bc!");
+          System.out.println("\t Wrong input provided Please press either 1,2 or 3");
       }
       try
       {
