@@ -9,7 +9,32 @@ public class Main{
     object.startPageUI();
   }
 
-  public static void displayLoan(Loan loan)
+  public static boolean isEligible(EMICalculator emiCalculator)
+  {
+    float income = emiCalculator.getIncome();
+    float expenses = emiCalculator.getExpenses();
+    String loanType = emiCalculator.getLoanType();
+    boolean existingEMI = emiCalculator.getExistingEMI();
+    float amountEMI = 0;
+    float loanAmount = emiCalculator.getLoanAmount();
+    if(existingEMI) emiCalculator.getAmountEMI();
+    float totalExpense = expenses + amountEMI;
+    float balance = (float)((0.7)*income - totalExpense);
+    if(balance>0)
+    {
+      if(loanType.equals("Car Loan"))
+      {
+        if(balance > loanAmount/48) return true;
+      }
+      else
+      {
+        if(balance > loanAmount/24) return true;
+      }
+    }
+    return false;
+  }
+
+  public static void displayLoanMenu(Loan loan)
   {
     Scanner sc = new Scanner(System.in);
     System.out.println("\t Hello and welcome to Loan Service");
@@ -36,6 +61,56 @@ public class Main{
     loan.setLoanAmount(loanAmount);
   }
 
+  public static void displayEMICalculatorMenu(EMICalculator emiCalculator)
+  {
+    Scanner sc = new Scanner(System.in);
+    String leftOver;
+    System.out.println("\t EMI Calculator");
+    System.out.println("\t Enter your Loan Type");
+    System.out.println("\t\t Press 1 for Car Insurance");
+    System.out.println("\t\t Press 2 for Home Insurance");
+    String input1 = sc.nextLine();
+    if(!input1.equals("1") && !input1.equals("2")){
+      System.out.println("\t\t Wrong Input!");
+      return;
+    }
+    String loanType;
+    if(input1.equals("1")) loanType = "Car Loan";
+    else loanType = "House Loan";
+
+    emiCalculator.setLoanType(loanType);
+
+    System.out.println("\t Enter your Income");
+    float income = sc.nextFloat();
+    leftOver = sc.nextLine();
+    emiCalculator.setIncome(income);
+
+    System.out.println("\t Enter your Expenses");
+    float expenses = sc.nextFloat();
+    leftOver = sc.nextLine();
+    emiCalculator.setExpenses(expenses);
+
+    System.out.println("\t Do you have an Active Loan?");
+    System.out.println("\t\t Press 1 for True");
+    System.out.println("\t\t Press 2 for False");
+    String ans = sc.nextLine();
+
+    if(!ans.equals("1") && !ans.equals("2")){
+      System.out.println("\t\t Wrong Input!");
+      return;
+    }
+    boolean existingEMI = (ans.equals("1"))?true:false;
+    emiCalculator.setExistingEMI(existingEMI);
+
+    if(existingEMI)
+    {
+          System.out.println("\t Enter your EMI Amount");
+          float amountEMI = sc.nextFloat();
+          emiCalculator.setAmountEMI(amountEMI);
+          leftOver = sc.nextLine();
+    }
+  }
+
   public void startPageUI() throws InterruptedException{
     Scanner sc = new Scanner(System.in);
     while(true)
@@ -54,13 +129,32 @@ public class Main{
 
       if(choice.charAt(0)=='1')
       {
-        Loan loan = new Loan();
-        displayLoan(loan);
+        EMICalculator loan = new EMICalculator();
+        displayLoanMenu(loan);
+        displayEMICalculatorMenu(loan);
+        if(isEligible(loan))
+        {
+          System.out.println("Your Loan is approved");
+        }
+        else
+        {
+          System.out.println("Sorry you are not eligible for this loan");
+        }
+          // Customer.add(loan);
       }
 
       else if(choice.charAt(0)=='2')
       {
-          System.out.println("\t Option 2");
+          EMICalculator emiCalculator = new EMICalculator();
+          displayEMICalculatorMenu(emiCalculator);
+          if(isEligible(emiCalculator))
+          {
+            System.out.println("Your Loan is approved");
+          }
+          else
+          {
+            System.out.println("Sorry you are not eligible for this loan");
+          }
       }
 
       else if(choice.charAt(0)=='3')

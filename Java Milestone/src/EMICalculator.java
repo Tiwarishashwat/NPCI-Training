@@ -7,7 +7,7 @@ public class EMICalculator extends Loan
     private boolean existingEMI;
 
     String getLoanType(){
-      return loanType
+      return loanType;
     }
     void setLoanType(String loanType)
     {
@@ -41,7 +41,7 @@ public class EMICalculator extends Loan
     boolean getExistingEMI(){
       return existingEMI;
     }
-    void setExistingEMI(float existingEMI)
+    void setExistingEMI(boolean existingEMI)
     {
       this.existingEMI = existingEMI;
     }
