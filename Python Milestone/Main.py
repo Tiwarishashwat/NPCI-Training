@@ -49,27 +49,47 @@ def getNumber():
         f.seek(0)
     return ticketNumber
 
-def convertToJson(CustomerName, message, ticketNumber, status):
+def convertToJson(CustomerName, message, ticketNumber, status, product, issueHead):
     entry={}
     entry["CustomerName"] = CustomerName
-    entry["message"] = message
     entry["ticketNumber"] = ticketNumber
+    entry["product"] = product
+    entry["issueHead"] = issueHead
+    entry["message"] = message
     entry["status"] = status
     return entry
 
 def raiseConcern(CustomerName):
     time.sleep(0.5)
+    print("Enter the name of your product")
+    productName = input()
+    print("Please choose one of the following issueHead")
+    print("Press 1 for Delayed Shipping")
+    print("Press 2 for Damaged Product Delivered")
+    print("Press 3 for Return/Replacement")
+    print("Press 4 for Others")
+    choice = input()
+    issueHead=""
+    if choice=="1":
+        issueHead = "Delayed Shipping"
+    elif choice=="2":
+        issueHead = "Damaged Product Delivered"
+    elif choice=="3":
+        issueHead = "Return/Replacement"
+    else:
+        issueHead = "Others"
     print("Enter your concern")
     message = input()
     ticketNumber = getNumber()
-    new_entry = convertToJson(CustomerName, message, ticketNumber, "Pending")
+    time.sleep(0.5)
+    new_entry = convertToJson(CustomerName, message, ticketNumber, "Pending",productName,issueHead)
     with open("CustomerTicketStatus.json",'r+') as f:
         data = json.loads(f.read())
         data["ticket_details"].append(new_entry)
         f.seek(0)
         json.dump(data,f,indent = 4)
     time.sleep(0.5)
-    return "Your Ticket has been successfully raised. Please Note down your Ticket Number "+ticketNumber+" for future references"
+    return "Your Ticket has been successfully raised. Please Note down your Ticket Number "+ticketNumber+" for future references!"
 
 def checkConcern(CustomerName):
     time.sleep(1)
@@ -87,11 +107,11 @@ def checkConcern(CustomerName):
         print("Enter your ticket number")
         ticketNumber = input()
         status = getStatus(ticketNumber,CustomerName)
-        time.sleep(0.5)
         if status == "Pending":
-            print("we are working on your concern. Kindly check back later")
+        time.sleep(0.5)
+            print("we are working on your concern. Kindly check back later!")
         elif status == "Resolved":
-            print("Congratulations, Your ticket status is Resolved")
+            print("Congratulations, Your ticket status is Resolved!")
     else:
         print(raiseConcern(CustomerName))
 
@@ -105,3 +125,4 @@ def welcome():
     # time.sleep(2)
 
 welcome()
+print("See you again soon!")
