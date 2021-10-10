@@ -1,0 +1,23 @@
+{
+    "ticket_details": [
+        {
+            "CustomerName": "Ayushi",
+            "ticketNumber": "234567",
+            "message": "My Order hasn't arrived from last 5 days",
+            "status": "Pending"
+        },
+        {
+            "CustomerName": "shashwat tiwari",
+            "message": "My laptop is not in working condition",
+            "ticketNumber": "234568",
+            "status": "Pending"
+        },
+        {
+            "CustomerName": "Ayush Kumar",
+            "message": "My laptop is broken",
+            "ticketNumber": "234569",
+            "status": "Resolved"
+        }
+
+    ]
+}
