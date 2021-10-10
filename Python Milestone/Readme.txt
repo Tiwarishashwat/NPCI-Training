@@ -1,4 +1,5 @@
-Hello below mentioned features have been successfully Added in the chatbot
+Hello,
+ below mentioned features have been successfully Added in the chatbot
 - Greet customers based on time of day eg: Good morning/afternoon/evening 
 - Accept customer name and greet them as "John, I hope you're doing well" 
 - Ask customer if they have a ticket number or want to raise new concern 
@@ -18,4 +19,6 @@ Run the Main.py File
 command :
 python Main.py
 
-
+Designed and Developed by:
+Shashwat Tiwari,
+GET, NPCI
