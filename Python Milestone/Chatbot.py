@@ -12,10 +12,10 @@ def greetAccordingToTime():
         return "Good Evening"
 
 def greetAccordingToName():
-    print("May I Know your Name Please?")
+    print("Your Good Name Please?")
     CustomerName = input()
     time.sleep(0.5)
-    print("Hi,",CustomerName,".I hope you are doing well")
+    print("Hi,",CustomerName,".I hope you are safe and sound")
     return CustomerName
 
 def getStatus(ticketNumber,CustomerName):
@@ -26,12 +26,12 @@ def getStatus(ticketNumber,CustomerName):
                 if i['CustomerName'] == CustomerName:
                     return i['status']
                 else:
-                    print("You have entered a wrong ticket number. Please check again")
+                    print("Ticket Number is not registered on your name. Please check again")
                     return ""
-    time.sleep(0.5)
-    return  ticketNumber + " is not found! \n Please check again"
+        time.sleep(0.5)
+    return  "Entered ticket number "+ ticketNumber + " is not found!"
 
-def getNumber():
+def getTicketNumber():
     with open("CustomerTicketStatus.json","r") as f:
         data = json.loads(f.read())
         ticketNumber = ""
@@ -40,8 +40,8 @@ def getNumber():
             ticketNumber = i['ticketNumber']
         if ticketNumber == "":
             ticketNumber = "00001"
-            getLen = len(ticketNumber)
         else:
+            getLen = len(ticketNumber)
             ticketNumber = int(ticketNumber) + 1
             ticketNumber = str(ticketNumber)
             if len(ticketNumber) < getLen:
@@ -61,9 +61,9 @@ def convertToJson(CustomerName, message, ticketNumber, status, product, issueHea
 
 def raiseConcern(CustomerName):
     time.sleep(0.5)
-    print("Enter the name of your product")
+    print("Please enter the name of your product")
     productName = input()
-    print("Please choose one of the following issueHead")
+    print("Please choose one of the following issues")
     print("Press 1 for Delayed Shipping")
     print("Press 2 for Damaged Product Delivered")
     print("Press 3 for Return/Replacement")
@@ -78,9 +78,9 @@ def raiseConcern(CustomerName):
         issueHead = "Return/Replacement"
     else:
         issueHead = "Others"
-    print("Enter your concern")
+    print("Please provide a brief detail of your content")
     message = input()
-    ticketNumber = getNumber()
+    ticketNumber = getTicketNumber()
     time.sleep(0.5)
     new_entry = convertToJson(CustomerName, message, ticketNumber, "Pending",productName,issueHead)
     with open("CustomerTicketStatus.json",'r+') as f:
@@ -89,34 +89,34 @@ def raiseConcern(CustomerName):
         f.seek(0)
         json.dump(data,f,indent = 4)
     time.sleep(0.5)
-    return "Your Ticket has been successfully raised. Please Note down your Ticket Number "+ticketNumber+" for future references!"
+    return "Your Ticket has been successfully raised. Please note your Ticket Number "+ticketNumber+" for future references!"
 
 def checkConcern(CustomerName):
     time.sleep(1)
-    print("Do you have a ticket or are you here to raise a concern?")
+    print("Press 1 if you already have a ticket")
     time.sleep(0.5)
-    print("Press 1 for first option")
-    time.sleep(0.5)
-    print("Press 2 for second option")
+    print("Press 2 for raising a new ticket")
     choice = input()
     if choice!="1" and choice!="2":
         time.sleep(0.5)
-        print("Not a correct choice")
+        print("You have entered a wrong choice")
     if choice == "1":
         time.sleep(0.5)
-        print("Enter your ticket number")
+        print("Kinly enter your ticket number")
         ticketNumber = input()
         status = getStatus(ticketNumber,CustomerName)
         if status == "Pending":
-        time.sleep(0.5)
-            print("we are working on your concern. Kindly check back later!")
+            time.sleep(0.5)
+            print("we are working on your concern. Kindly check back with us later!")
         elif status == "Resolved":
-            print("Congratulations, Your ticket status is Resolved!")
+            print("Congratulations "+CustomerName +", Your ticket status is Resolved!")
+        else:
+            print(status)
     else:
         print(raiseConcern(CustomerName))
 
 def welcome():
-    print("Welcome to ShashZone Online Shopping ChatBox Application")
+    print("Welcome to Online Shopping ChatBox Application")
     time.sleep(2)
     print(greetAccordingToTime())
     time.sleep(1)
@@ -125,4 +125,5 @@ def welcome():
     # time.sleep(2)
 
 welcome()
-print("See you again soon!")
+time.sleep(0.5)
+print("Thankyou for your precious time. See ya!")

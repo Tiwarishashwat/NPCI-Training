@@ -2,7 +2,7 @@
     "ticket_details": [
         {
             "CustomerName": "Ayushi",
-            "ticketNumber": "234567",
+            "ticketNumber": "000007",
             "product": "Clothes",
             "issueHead": "Delayed Shipping",
             "message": "My Order hasn't arrived from last 5 days",
@@ -10,59 +10,19 @@
         },
         {
             "CustomerName": "shashwat tiwari",
-            "ticketNumber": "234568",
+            "ticketNumber": "000008",
             "product": "Laptop",
             "issueHead": "Damaged Product Delivered",
             "message": "Screen is broken",
-            "status": "Pending"
+            "status": "Resolved"
         },
         {
-            "CustomerName": "Pavleen",
-            "ticketNumber": "234569",
+            "CustomerName": "Ayushi Sharma",
+            "ticketNumber": "000009",
             "product": "Refrigrator",
-            "issueHead": "Delayed Shipping",
-            "message": "My Order hasn't arrived from last 15 days",
+            "issueHead": "Others",
+            "message": "I got a big soap instead of Refrigrator",
             "status": "Pending"
-        },
-        {
-            "CustomerName": "Sejal",
-            "ticketNumber": "234570",
-            "product": "Battery Bank",
-            "issueHead": "Damaged Product Delivered",
-            "message": "Port is broken",
-            "status": "Pending"
-        },
-        {
-            "CustomerName": "Shikha",
-            "ticketNumber": "234571",
-            "product": "Battery Bank",
-            "issueHead": "Damaged Product Delivered",
-            "message": "Port is broken",
-            "status": "Pending"
-        },
-        {
-            "CustomerName": "Prakhar",
-            "ticketNumber": "234572",
-            "product": "Water Tank",
-            "issueHead": "Damaged Product Delivered",
-            "message": "Lid is broken",
-            "status": "Resolved"
-        },
-        {
-            "CustomerName": "Satyapathi",
-            "ticketNumber": "234573",
-            "product": "Travel Bag",
-            "issueHead": "Damaged Product Delivered",
-            "message": "Chain is broken",
-            "status": "Resolved"
-        },
-        {
-            "CustomerName": "Ayush Kumar",
-            "ticketNumber": "234574",
-            "product": "Biscuit",
-            "issueHead": "Damaged Product Delivered",
-            "message": "Packet is torn",
-            "status": "Resolved"
         }
     ]
 }
